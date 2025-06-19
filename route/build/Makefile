@@ -10,13 +10,13 @@
 # User configure part
 #========================================================================
 # Define fortran compiler - gnu, intel or pgi
-FC  =
+FC  = gnu
 
 # Define the compiler exe, e.g., gnu=>gfortran, intel=>ifort, pgi=>pgf90
-FC_EXE =
+FC_EXE = gfortran
 
 # Define the executable
-EXE =
+EXE = route
 
 # Define optional setting
 # fast:      Enables optimizations
@@ -30,11 +30,11 @@ isOpenMP =
 # Define core directory below which everything resides
 # parent directory of the 'build' directory
 # do not put space at the end of path
-F_MASTER =
+F_MASTER = ../
 
 # Define the NetCDF libraries and path to include files
 ifeq "$(FC)" "gnu"
- NCDF_PATH =
+ NCDF_PATH = /usr/lib64/gfortran/modules	
 else ifeq "$(FC)" "intel"
  NCDF_PATH =
 else ifeq "$(FC)" "pgi"
@@ -43,9 +43,8 @@ else
  $(error FC is not set correctly)
 endif
 
-LIBNETCDF = -Wl,-rpath,$(NCDF_PATH)/lib \
-            -L$(NCDF_PATH)/lib -lnetcdff -lnetcdf
-INCNETCDF = -I$(NCDF_PATH)/include
+LIBNETCDF = -L$(NCDF_PATH) -lnetcdff 
+INCNETCDF = -I$(NCDF_PATH)
 
 #========================================================================
 # generate a Git version string
@@ -173,7 +172,8 @@ CORE = \
     kw_route.f90 \
     mc_route.f90 \
     main_route.f90 \
-    model_setup.f90
+    model_setup.f90 \
+    route_interface.f90
 
 # concatanate model subroutines
 TEMP_MODSUB = $(UTILS) $(DATATYPES) $(INIT) $(IO) $(CORE)
@@ -192,6 +192,7 @@ DRIVER = $(F_KORE_DIR)route_runoff.f90
 #========================================================================
 # tasks
 all: compile install clean
+
 
 # compile
 compile:
