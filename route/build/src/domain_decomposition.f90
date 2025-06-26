@@ -9,9 +9,9 @@ USE dataTypes,         ONLY: subdomain     ! sub-domain data structure (tributar
 ! variable indices
 USE var_lookup,        ONLY: ixNTOPO       ! index of variables for the netowork topolgy
 ! General utilities
-USE nr_utility_module, ONLY: indexx        ! sorting array
-USE nr_utility_module, ONLY: indexTrue     ! index at only true in array
-USE nr_utility_module, ONLY: arth          ! generate sequential array
+USE nr_utility_module_mizuRoute, ONLY: indexx        ! sorting array
+USE nr_utility_module_mizuRoute, ONLY: indexTrue     ! index at only true in array
+USE nr_utility_module_mizuRoute, ONLY: arth          ! generate sequential array
 ! updated and saved data
 USE public_var
 

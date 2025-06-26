@@ -21,9 +21,9 @@ USE var_lookup, ONLY: ixSEG,    nVarsSEG     ! index of variables for the stream
 USE var_lookup, ONLY: ixHRU2SEG,nVarsHRU2SEG ! index of variables for the hru2segment mapping
 USE var_lookup, ONLY: ixNTOPO,  nVarsNTOPO   ! index of variables for the network topology
 ! external utilities
-USE nr_utility_module, ONLY: findIndex       ! find index in array given value
-USE nr_utility_module, ONLY: indexx          ! ranking array
-USE nr_utility_module, ONLY: arth            ! gerate sequential array
+USE nr_utility_module_mizuRoute, ONLY: findIndex       ! find index in array given value
+USE nr_utility_module_mizuRoute, ONLY: indexx          ! ranking array
+USE nr_utility_module_mizuRoute, ONLY: arth            ! gerate sequential array
 
 implicit none
 

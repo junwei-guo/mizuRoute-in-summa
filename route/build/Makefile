@@ -192,7 +192,7 @@ DRIVER = $(F_KORE_DIR)route_runoff.f90
 #========================================================================
 # tasks
 #all: compile install clean
-all: compileOBJ compileMOD lib
+all:  compileMOD compileOBJ lib
 
 
 # compile
@@ -213,7 +213,7 @@ lib:
 
 # Remove object files
 clean:
-						rm -f *.o
+						rm -f *.o src/*.o
 						rm -f *.lst
 						rm -f *.mod
 						rm -f *__genmod.f90

@@ -25,7 +25,7 @@ USE var_lookup, ONLY: ixPFAF,   nVarsPFAF    ! index of variables for the pfafst
 ! netcdf modules
 USE netcdf
 ! external utilities
-USE nr_utility_module, ONLY: arth    ! Num. Recipies utilities
+USE nr_utility_module_mizuRoute, ONLY: arth    ! Num. Recipies utilities
 USE alloc_data,        ONLY: alloc_struct
 
 implicit none

@@ -148,7 +148,7 @@ CONTAINS
                              ixTime,            & ! input: simulation time index
                              ierr, message)
 
-   USE nr_utility_module, ONLY: arth
+   USE nr_utility_module_mizuRoute, ONLY: arth
    USE datetime_data,     ONLY: datetime       ! time data type
    USE dataTypes,         ONLY: map_time       ! data type for time-step mapping between two time series
    USE public_var,        ONLY: verySmall      ! smallest real values

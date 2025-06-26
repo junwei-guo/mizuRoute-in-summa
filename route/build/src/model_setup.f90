@@ -15,9 +15,9 @@ USE public_var, ONLY : charMissing
 
 USE io_netcdf, ONLY : close_nc         ! close netcdf
 
-USE nr_utility_module, ONLY : findIndex ! get array index of matching element
-USE nr_utility_module, ONLY : unique  ! get unique element array
-USE nr_utility_module, ONLY : indexx  ! get rank of data value
+USE nr_utility_module_mizuRoute, ONLY : findIndex ! get array index of matching element
+USE nr_utility_module_mizuRoute, ONLY : unique  ! get unique element array
+USE nr_utility_module_mizuRoute, ONLY : indexx  ! get rank of data value
 
 implicit none
 

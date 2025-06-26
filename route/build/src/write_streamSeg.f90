@@ -36,8 +36,8 @@ USE io_netcdf, only: close_nc              ! close netcdf
 USE io_netcdf, only: write_nc
 
 ! external utilities
-USE nr_utility_module, ONLY: indexx  ! Num. Recipies utilities
-USE nr_utility_module, ONLY: arth    ! Num. Recipies utilities
+USE nr_utility_module_mizuRoute, ONLY: indexx  ! Num. Recipies utilities
+USE nr_utility_module_mizuRoute, ONLY: arth    ! Num. Recipies utilities
 
 implicit none
 

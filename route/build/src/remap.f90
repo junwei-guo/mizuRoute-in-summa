@@ -334,7 +334,7 @@ MODULE remapping
                          ierr, message,     & ! output: error control
                          ixSubRch)            ! optional input: subset of reach indices to be processed
 
-  USE nr_utility_module, ONLY : arth
+  USE nr_utility_module_mizuRoute, ONLY : arth
 
   implicit none
   ! Argument variables
