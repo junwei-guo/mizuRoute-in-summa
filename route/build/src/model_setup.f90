@@ -251,7 +251,7 @@ CONTAINS
  ! *********************************************************************
  SUBROUTINE init_state(ierr, message)
 
-  USE ascii_util_module, ONLY : lower             ! convert string to lower case
+  USE ascii_util_module_mizuRoute, ONLY : lower             ! convert string to lower case
   USE read_restart,      ONLY : read_state_nc     ! read netcdf state output file
   USE public_var,    ONLY : dt_sim                ! simulation time step (seconds)
   USE public_var,    ONLY : impulseResponseFunc   ! IRF routing ID = 1
@@ -350,7 +350,7 @@ CONTAINS
  SUBROUTINE init_time(nRoTime,     &  ! input: number of time steps
                       ierr, message)  ! output
 
-  USE ascii_util_module, ONLY: lower         ! convert string to lower case
+  USE ascii_util_module_mizuRoute, ONLY: lower         ! convert string to lower case
   USE io_netcdf,         ONLY: open_nc       ! netcdf input
   USE io_netcdf,         ONLY: close_nc      ! netcdf input
   USE io_netcdf,         ONLY: get_nc        ! netcdf input

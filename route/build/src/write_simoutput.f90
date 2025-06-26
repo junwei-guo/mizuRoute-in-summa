@@ -171,7 +171,7 @@ CONTAINS
  ! *********************************************************************
  SUBROUTINE prep_output(ierr, message)    ! out:   error control
 
- USE ascii_util_module,   ONLY: lower
+ USE ascii_util_module_mizuRoute,   ONLY: lower
  ! saved public variables (usually parameters, or values not modified)
  USE public_var,          only : output_dir        ! output directory
  USE public_var,          only : case_name         ! simulation name ==> output filename head

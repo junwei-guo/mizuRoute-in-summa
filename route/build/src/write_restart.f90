@@ -68,7 +68,7 @@ CONTAINS
  ! *********************************************************************
  SUBROUTINE restart_alarm(ierr, message)
 
-   USE ascii_util_module, ONLY: lower
+   USE ascii_util_module_mizuRoute, ONLY: lower
    USE public_var,        ONLY: calendar
    USE public_var,        ONLY: restart_write  ! restart write options
    USE public_var,        ONLY: restart_day
