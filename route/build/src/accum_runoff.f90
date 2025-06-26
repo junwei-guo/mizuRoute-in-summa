@@ -11,7 +11,7 @@ USE dataTypes,      ONLY: subbasin_omp   ! mainstem+tributary data structures
 USE public_var,     ONLY: iulog          ! i/o logical unit number
 USE globalData,     ONLY: idxSUM         ! index of accumulation method
 ! subroutines: general
-USE model_finalize, ONLY : handle_err
+USE model_finalize, ONLY : handle_error
 
 implicit none
 
@@ -101,7 +101,7 @@ CONTAINS
        if (.not. doRoute(jSeg)) cycle
 
        call accum_qupstream(iens, jSeg, ixDesire, NETOPO_in, RCHFLX_out, ierr, cmessage)
-       if(ierr/=0) call handle_err(ierr, trim(message)//trim(cmessage))
+       if(ierr/=0) call handle_error(ierr, trim(message)//trim(cmessage))
 
      end do
    end do

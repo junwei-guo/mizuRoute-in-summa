@@ -21,7 +21,7 @@ USE write_simoutput,     ONLY: prep_output      !
 USE write_simoutput,     ONLY: output           !
 USE write_restart,       ONLY: main_restart     ! write netcdf restart file
 USE model_finalize,      ONLY: finalize
-USE model_finalize,      ONLY: handle_err
+USE model_finalize,      ONLY: handle_error
 
 implicit none
 
@@ -40,73 +40,74 @@ real(dp)                      :: elapsedTime
 
 CONTAINS 
 
-  SUBROUTINE run_one_step()
-! ******
-! system_clock rate
-call system_clock(count_rate=cr)
+  SUBROUTINE stand_alone_run()
+  ! ******
+  ! system_clock rate
+  call system_clock(count_rate=cr)
 
-! ******
-! get command-line argument defining the full path to the control file
-! ***********************************
- call getarg(1,cfile_name)
- if(len_trim(cfile_name)==0) call handle_err(50,'need to supply name of the control file as a command-line argument')
+  ! ******
+  ! get command-line argument defining the full path to the control file
+  ! ***********************************
+  call getarg(1,cfile_name)
+  if(len_trim(cfile_name)==0) call handle_error(50,'need to supply name of the control file as a command-line argument')
 
-! *****
-! *** model setup
-!    - read control files and namelist
-!    - broadcast to all processors
-! ************************
-call init_model(cfile_name, ierr, cmessage)
-if(ierr/=0) call handle_err(ierr, cmessage)
+  ! *****
+  ! *** model setup
+  !    - read control files and namelist
+  !    - broadcast to all processors
+  ! ************************
+  call init_model(cfile_name, ierr, cmessage)
+  if(ierr/=0) call handle_error(ierr, cmessage)
 
-! *****
-! *** data initialization
-!    - river topology, properties, river network domain decomposition
-!    - runoff data (datetime, domain)
-!    - runoff remapping data
-!    - channel states
-! ***********************************
-call init_data(ierr, cmessage)
-if(ierr/=0) call handle_err(ierr, cmessage)
+  ! *****
+  ! *** data initialization
+  !    - river topology, properties, river network domain decomposition
+  !    - runoff data (datetime, domain)
+  !    - runoff remapping data
+  !    - channel states
+  ! ***********************************
+  call init_data(ierr, cmessage)
+  if(ierr/=0) call handle_error(ierr, cmessage)
 
-! ***********************************
-! start of time-stepping simulation
-! ***********************************
-do while (.not.finished)
+  ! ***********************************
+  ! start of time-stepping simulation
+  ! ***********************************
+  do while (.not.finished)
 
-  call prep_output(ierr, cmessage)
-  if(ierr/=0) call handle_err(ierr, cmessage)
+    call prep_output(ierr, cmessage)
+    if(ierr/=0) call handle_error(ierr, cmessage)
 
-call system_clock(startTime)
-  call get_hru_runoff(ierr, cmessage)
-  if(ierr/=0) call handle_err(ierr, cmessage)
-call system_clock(endTime)
-elapsedTime = real(endTime-startTime, kind(dp))/real(cr)
-write(*,"(A,1PG15.7,A)") '   elapsed-time [read_ro] = ', elapsedTime, ' s'
+  call system_clock(startTime)
+    call get_hru_runoff(ierr, cmessage)
+    if(ierr/=0) call handle_error(ierr, cmessage)
+  call system_clock(endTime)
+  elapsedTime = real(endTime-startTime, kind(dp))/real(cr)
+  write(*,"(A,1PG15.7,A)") '   elapsed-time [read_ro] = ', elapsedTime, ' s'
 
-call system_clock(startTime)
-  call main_route(iens, ierr, cmessage)
-  if(ierr/=0) call handle_err(ierr, cmessage)
-call system_clock(endTime)
-elapsedTime = real(endTime-startTime, kind(dp))/real(cr)
-write(*,"(A,1PG15.7,A)") '   elapsed-time [routing] = ', elapsedTime, ' s'
+  call system_clock(startTime)
+    call main_route(iens, ierr, cmessage)
+    if(ierr/=0) call handle_error(ierr, cmessage)
+  call system_clock(endTime)
+  elapsedTime = real(endTime-startTime, kind(dp))/real(cr)
+  write(*,"(A,1PG15.7,A)") '   elapsed-time [routing] = ', elapsedTime, ' s'
 
-call system_clock(startTime)
-  call output(ierr, cmessage)
-  if(ierr/=0) call handle_err(ierr, cmessage)
-call system_clock(endTime)
-elapsedTime = real(endTime-startTime, kind(dp))/real(cr)
-write(*,"(A,1PG15.7,A)") '   elapsed-time [output] = ', elapsedTime, ' s'
+  call system_clock(startTime)
+    call output(ierr, cmessage)
+    if(ierr/=0) call handle_error(ierr, cmessage)
+  call system_clock(endTime)
+  elapsedTime = real(endTime-startTime, kind(dp))/real(cr)
+  write(*,"(A,1PG15.7,A)") '   elapsed-time [output] = ', elapsedTime, ' s'
 
-  call main_restart(ierr, cmessage)
-  if(ierr/=0) call handle_err(ierr, cmessage)
+    call main_restart(ierr, cmessage)
+    if(ierr/=0) call handle_error(ierr, cmessage)
 
-  call update_time(finished, ierr, cmessage)
-  if(ierr/=0) call handle_err(ierr, cmessage)
+    call update_time(finished, ierr, cmessage)
+    if(ierr/=0) call handle_error(ierr, cmessage)
 
-end do
+  end do
 
-call finalize()
+  call finalize()
 
-end subroutine RUN_ONE_STEP
+end subroutine stand_alone_run
+
 END MODULE route_interface

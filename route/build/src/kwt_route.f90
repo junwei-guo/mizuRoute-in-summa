@@ -40,7 +40,7 @@ CONTAINS
                       ixSubRch)               ! optional input: subset of reach indices to be processed
 
    USE dataTypes,      ONLY : subbasin_omp        ! mainstem+tributary data strucuture
-   USE model_finalize, ONLY : handle_err
+   USE model_finalize, ONLY : handle_error
 
    implicit none
    ! Argument variables
@@ -135,7 +135,7 @@ CONTAINS
                          RCHSTA_out,          & ! inout: reach state data structure
                          RCHFLX_out,          & ! inout: reach flux data structure
                          ierr,cmessage)         ! output: error control
-         if(ierr/=0) call handle_err(ierr, trim(message)//trim(cmessage))
+         if(ierr/=0) call handle_error(ierr, trim(message)//trim(cmessage))
        end do seg
 !     call system_clock(openMPend(iTrib))
 !     timeTrib(iTrib) = real(openMPend(iTrib)-timeTribStart(iTrib), kind(dp))

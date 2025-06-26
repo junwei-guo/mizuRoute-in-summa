@@ -191,7 +191,8 @@ DRIVER = $(F_KORE_DIR)route_runoff.f90
 # Compile the puppy
 #========================================================================
 # tasks
-all: compile install clean
+#all: compile install clean
+all: compile
 
 
 # compile
@@ -199,6 +200,9 @@ compile:
 	$(FC_EXE) $(FLAGS) $(MODSUB) $(DRIVER) \
 	$(LIBNETCDF) $(INCNETCDF) -o $(EXE)
 	@echo "Succesfully compiled"
+
+
+#  gfortran -c src/route_interface.f90 -J./ -o route_interface.o
 
 # Remove object files
 clean:

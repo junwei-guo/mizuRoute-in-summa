@@ -16,7 +16,7 @@ USE public_var,  ONLY: qmodOption        ! qmod option (use 1==direct insertion)
 USE globalData,  ONLY: idxDW
 ! subroutines: general
 USE data_assimilation, ONLY: direct_insertion ! qmod option (use 1==direct insertion)
-USE model_finalize,    ONLY: handle_err
+USE model_finalize,    ONLY: handle_error
 
 implicit none
 
@@ -113,7 +113,7 @@ CONTAINS
                       RCHSTA_out,          & ! inout: reach state data structure
                       RCHFLX_out,          & ! inout: reach flux data structure
                       ierr,cmessage)         ! output: error control
-         if(ierr/=0) call handle_err(ierr, trim(message)//trim(cmessage))
+         if(ierr/=0) call handle_error(ierr, trim(message)//trim(cmessage))
        end do  seg
      end do trib
 !$OMP END PARALLEL DO
