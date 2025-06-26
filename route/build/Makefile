@@ -192,17 +192,24 @@ DRIVER = $(F_KORE_DIR)route_runoff.f90
 #========================================================================
 # tasks
 #all: compile install clean
-all: compile
+all: compileOBJ compileMOD lib
 
 
 # compile
-compile:
+compileMOD:
 	$(FC_EXE) $(FLAGS) $(MODSUB) $(DRIVER) \
 	$(LIBNETCDF) $(INCNETCDF) -o $(EXE)
 	@echo "Succesfully compiled"
 
+compileOBJ: $(MODSUB:.f90=.o)
 
+%.o: %.f90
+	$(FC_EXE) $(FLAGS)  $(INCNETCDF) -c $< -o $@ -J$(MOD_PATH)
 #  gfortran -c src/route_interface.f90 -J./ -o route_interface.o
+#  gfortran -c src/model_setup.f90 -J./ -o model_setup.o
+
+lib:
+	ar rcs $(F_MASTER)build/libmizuroute.a $(MODSUB:.f90=.o)
 
 # Remove object files
 clean:

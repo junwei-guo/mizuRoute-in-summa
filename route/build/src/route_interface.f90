@@ -4,6 +4,7 @@
 !! ======================================================================================================
 MODULE route_interface
 
+
 ! ******
 ! provide access to external data, subroutines
 ! ****************************************************
@@ -23,7 +24,10 @@ USE write_restart,       ONLY: main_restart     ! write netcdf restart file
 USE model_finalize,      ONLY: finalize
 USE model_finalize,      ONLY: handle_error
 
+
 implicit none
+
+public :: stand_alone_run
 
 ! ******
 ! define variables
