@@ -32,7 +32,7 @@ CONTAINS
  ! ***************************************************************
  SUBROUTINE omp_domain_decomposition(nSeg, structNTOPO, river_basin_out, ierr, message)
 
-   USE globalData, ONLY: nThreads    ! number of threads
+   USE globalData_mizuRoute, ONLY: nThreads    ! number of threads
 
    implicit none
    ! Argument variables

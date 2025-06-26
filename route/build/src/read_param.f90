@@ -11,7 +11,7 @@ MODULE read_param_module
   SUBROUTINE read_param(fname, ierr, message)
 
    USE ascii_util_module_mizuRoute, ONLY : file_open          ! open file (performs a few checks as well)
-   USE globalData,        ONLY : fshape, tscale, &  ! basin IRF routing parameters
+   USE globalData_mizuRoute,        ONLY : fshape, tscale, &  ! basin IRF routing parameters
                                  velo, diff,     &  ! IRF routing parameters
                                  mann_n, wscale     ! KWT routing parameters
    implicit none

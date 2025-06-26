@@ -9,7 +9,7 @@ USE dataTypes,      ONLY: RCHTOPO        ! Network topology
 USE dataTypes,      ONLY: subbasin_omp   ! mainstem+tributary data structures
 ! global data
 USE public_var,     ONLY: iulog          ! i/o logical unit number
-USE globalData,     ONLY: idxSUM         ! index of accumulation method
+USE globalData_mizuRoute,     ONLY: idxSUM         ! index of accumulation method
 ! subroutines: general
 USE model_finalize, ONLY : handle_error
 

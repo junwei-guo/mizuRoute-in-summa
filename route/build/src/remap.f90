@@ -17,7 +17,7 @@ MODULE remapping
   ! global data
   USE public_var, ONLY: runoffMin, negRunoffTol
   USE public_var, ONLY: integerMissing
-  USE globalData, ONLY: time_conv,length_conv   ! conversion factors
+  USE globalData_mizuRoute, ONLY: time_conv,length_conv   ! conversion factors
 
   implicit none
 

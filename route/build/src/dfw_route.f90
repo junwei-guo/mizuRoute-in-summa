@@ -13,7 +13,7 @@ USE public_var,  ONLY: iulog             ! i/o logical unit number
 USE public_var,  ONLY: realMissing       ! missing value for real number
 USE public_var,  ONLY: integerMissing    ! missing value for integer number
 USE public_var,  ONLY: qmodOption        ! qmod option (use 1==direct insertion)
-USE globalData,  ONLY: idxDW
+USE globalData_mizuRoute,  ONLY: idxDW
 ! subroutines: general
 USE data_assimilation, ONLY: direct_insertion ! qmod option (use 1==direct insertion)
 USE model_finalize,    ONLY: handle_error
@@ -269,7 +269,7 @@ CONTAINS
  !  solving the matrix equation use thomas algorithm
  !
  ! ----------------------------------------------------------------------------------------
- USE globalData, ONLY : nMolecule   ! number of internal nodes for finite difference (including upstream and downstream boundaries)
+ USE globalData_mizuRoute, ONLY : nMolecule   ! number of internal nodes for finite difference (including upstream and downstream boundaries)
  implicit none
  ! Argument variables
  type(RCHPRP), intent(in)        :: rch_param      ! River reach parameter

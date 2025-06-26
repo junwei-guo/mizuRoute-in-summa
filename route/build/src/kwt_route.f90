@@ -14,7 +14,7 @@ USE public_var, ONLY: runoffMin        ! minimum runoff
 USE public_var, ONLY: verySmall        ! a very small value
 USE public_var, ONLY: realMissing      ! missing value for real number
 USE public_var, ONLY: integerMissing   ! missing value for integer number
-USE globalData, ONLY: idxKWT           ! index of KWT method
+USE globalData_mizuRoute, ONLY: idxKWT           ! index of KWT method
 ! utilities
 USE nr_utility_module_mizuRoute, ONLY: arth      ! Num. Recipies utilities
 
@@ -601,8 +601,8 @@ CONTAINS
  !  T_EXIT(:): Vector of times flow particles are expected to exit reach JRCH
  !
  ! ----------------------------------------------------------------------------------------
- USE globalData, ONLY: LKTOPO           ! Lake topology
- USE globalData, ONLY: LAKFLX           ! Lake fluxes
+ USE globalData_mizuRoute, ONLY: LKTOPO           ! Lake topology
+ USE globalData_mizuRoute, ONLY: LAKFLX           ! Lake fluxes
 
  implicit none
  ! Argument variables

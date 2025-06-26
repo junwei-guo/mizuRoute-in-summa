@@ -18,18 +18,18 @@ CONTAINS
  SUBROUTINE read_control(ctl_fname, err, message)
 
  ! global vars
- USE globalData, only:time_conv,length_conv  ! conversion factors
+ USE globalData_mizuRoute, only:time_conv,length_conv  ! conversion factors
  ! metadata structures
- USE globalData, ONLY: meta_HRU             ! HRU properties
- USE globalData, ONLY: meta_HRU2SEG         ! HRU-to-segment mapping
- USE globalData, ONLY: meta_SEG             ! stream segment properties
- USE globalData, ONLY: meta_NTOPO           ! network topology
- USE globalData, ONLY: meta_PFAF            ! pfafstetter code
- USE globalData, ONLY: meta_rflx            ! river flux variables
- USE globalData, ONLY: nRoutes              ! number of active routing methods
- USE globalData, ONLY: routeMethods         ! active routing method index and id
- USE globalData, ONLY: onRoute                 ! logical to indicate actiive routing method(s)
- USE globalData, ONLY: idxSUM,idxIRF,idxKWT, &
+ USE globalData_mizuRoute, ONLY: meta_HRU             ! HRU properties
+ USE globalData_mizuRoute, ONLY: meta_HRU2SEG         ! HRU-to-segment mapping
+ USE globalData_mizuRoute, ONLY: meta_SEG             ! stream segment properties
+ USE globalData_mizuRoute, ONLY: meta_NTOPO           ! network topology
+ USE globalData_mizuRoute, ONLY: meta_PFAF            ! pfafstetter code
+ USE globalData_mizuRoute, ONLY: meta_rflx            ! river flux variables
+ USE globalData_mizuRoute, ONLY: nRoutes              ! number of active routing methods
+ USE globalData_mizuRoute, ONLY: routeMethods         ! active routing method index and id
+ USE globalData_mizuRoute, ONLY: onRoute                 ! logical to indicate actiive routing method(s)
+ USE globalData_mizuRoute, ONLY: idxSUM,idxIRF,idxKWT, &
                        idxKW,idxMC,idxDW
  ! index of named variables in each structure
  USE var_lookup, ONLY: ixHRU

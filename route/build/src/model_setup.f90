@@ -37,10 +37,10 @@ CONTAINS
 
   USE public_var,          ONLY : ancil_dir
   USE public_var,          ONLY : param_nml
-  USE globalData,          ONLY : nThreads         ! a number of threads
-  USE globalData,          ONLY : version          ! mizuRoute version
-  USE globalData,          ONLY : gitBranch        ! git branch
-  USE globalData,          ONLY : gitHash          ! git commit hash
+  USE globalData_mizuRoute,          ONLY : nThreads         ! a number of threads
+  USE globalData_mizuRoute,          ONLY : version          ! mizuRoute version
+  USE globalData_mizuRoute,          ONLY : gitBranch        ! git branch
+  USE globalData_mizuRoute,          ONLY : gitHash          ! git commit hash
   USE popMetadat_module,   ONLY : popMetadat       ! populate metadata
   USE read_control_module, ONLY : read_control     ! read the control file
   USE read_param_module,   ONLY : read_param       ! read the routing parameters
@@ -99,17 +99,17 @@ CONTAINS
   USE public_var,  ONLY : desireId               ! ID of reach to be checked by on-screen printing
   USE var_lookup,  ONLY : ixHRU2SEG              ! index of variables for data structure
   USE var_lookup,  ONLY : ixNTOPO                ! index of variables for data structure
-  USE globalData,  ONLY : RCHFLX                 ! Reach flux data structures (entire river network)
-  USE globalData,  ONLY : RCHSTA                 ! Reach state structures (entire river network)
+  USE globalData_mizuRoute,  ONLY : RCHFLX                 ! Reach flux data structures (entire river network)
+  USE globalData_mizuRoute,  ONLY : RCHSTA                 ! Reach state structures (entire river network)
 
-  USE globalData,  ONLY : nHRU, nRch             ! number of HRUs and Reaches in the whole network
-  USE globalData,  ONLY : nEns                   ! number of ensembles
-  USE globalData,  ONLY : nRoutes                ! number of active routing methods
-  USE globalData,  ONLY : basinID                ! HRU id vector
-  USE globalData,  ONLY : reachID                ! reach ID vector
-  USE globalData,  ONLY : ixPrint                ! reach index to be examined by on-screen printing
-  USE globalData,  ONLY : runoff_data            ! runoff data structure
-  USE globalData,  ONLY : remap_data             ! runoff mapping data structure
+  USE globalData_mizuRoute,  ONLY : nHRU, nRch             ! number of HRUs and Reaches in the whole network
+  USE globalData_mizuRoute,  ONLY : nEns                   ! number of ensembles
+  USE globalData_mizuRoute,  ONLY : nRoutes                ! number of active routing methods
+  USE globalData_mizuRoute,  ONLY : basinID                ! HRU id vector
+  USE globalData_mizuRoute,  ONLY : reachID                ! reach ID vector
+  USE globalData_mizuRoute,  ONLY : ixPrint                ! reach index to be examined by on-screen printing
+  USE globalData_mizuRoute,  ONLY : runoff_data            ! runoff data structure
+  USE globalData_mizuRoute,  ONLY : remap_data             ! runoff mapping data structure
 
    implicit none
    ! Argument variables
@@ -193,12 +193,12 @@ CONTAINS
    USE public_var, ONLY : dt_sim
    USE public_var, ONLY : calendar
    USE public_var, ONLY : time_units    ! netcdf time units - t_unit since yyyy-mm-dd hh:mm:ss
-   USE globalData, ONLY : iTime         ! current simulation time step index
-   USE globalData, ONLY : timeVar       ! model time variables in time unit since reference time
-   USE globalData, ONLY : TSEC          ! beginning/ending of simulation time step [sec]
-   USE globalData, ONLY : simout_nc     ! netCDF meta data
-   USE globalData, ONLY : endDatetime   ! model ending datetime
-   USE globalData, ONLY : simDatetime   ! current model datetime
+   USE globalData_mizuRoute, ONLY : iTime         ! current simulation time step index
+   USE globalData_mizuRoute, ONLY : timeVar       ! model time variables in time unit since reference time
+   USE globalData_mizuRoute, ONLY : TSEC          ! beginning/ending of simulation time step [sec]
+   USE globalData_mizuRoute, ONLY : simout_nc     ! netCDF meta data
+   USE globalData_mizuRoute, ONLY : endDatetime   ! model ending datetime
+   USE globalData_mizuRoute, ONLY : simDatetime   ! current model datetime
 
    implicit none
    ! Argument variables
@@ -261,12 +261,12 @@ CONTAINS
   USE public_var,    ONLY : diffusiveWave         ! DW routing ID = 5
   USE public_var,    ONLY : fname_state_in        ! name of state input file
   USE public_var,    ONLY : restart_dir           ! directory containing output data
-  USE globalData,    ONLY : nRoutes               !
-  USE globalData,    ONLY : routeMethods          ! ID of active routing method
-  USE globalData,    ONLY : RCHFLX                ! reach flux structure
-  USE globalData,    ONLY : RCHSTA                ! reach restart state structure
-  USE globalData,    ONLY : nMolecule             ! computational molecule
-  USE globalData,    ONLY : TSEC                  ! begining/ending of simulation time step [sec]
+  USE globalData_mizuRoute,    ONLY : nRoutes               !
+  USE globalData_mizuRoute,    ONLY : routeMethods          ! ID of active routing method
+  USE globalData_mizuRoute,    ONLY : RCHFLX                ! reach flux structure
+  USE globalData_mizuRoute,    ONLY : RCHSTA                ! reach restart state structure
+  USE globalData_mizuRoute,    ONLY : nMolecule             ! computational molecule
+  USE globalData_mizuRoute,    ONLY : TSEC                  ! begining/ending of simulation time step [sec]
 
   implicit none
   ! Argument variables
@@ -371,14 +371,14 @@ CONTAINS
   USE public_var,        ONLY: restart_day   !
   USE public_var,        ONLY: restart_hour  !
   USE public_var,        ONLY: maxTimeDiff   ! time difference tolerance for input checks
-  USE globalData,        ONLY: timeVar       ! model time variables in time unit since reference time
-  USE globalData,        ONLY: iTime         ! time index at simulation time step
-  USE globalData,        ONLY: simDatetime   ! current model time data (yyyy:mm:dd:hh:mm:sec)
-  USE globalData,        ONLY: begDatetime   ! simulation begin datetime data (yyyy:mm:dd:hh:mm:sec)
-  USE globalData,        ONLY: endDatetime   ! simulation end time data (yyyy:mm:dd:hh:mm:sec)
-  USE globalData,        ONLY: restDatetime  ! restart time data (yyyy:mm:dd:hh:mm:sec)
-  USE globalData,        ONLY: dropDatetime  ! restart dropoff calendar date/time
-  USE globalData,        ONLY: roBegDatetime ! forcing data start datetime data (yyyy:mm:dd:hh:mm:sec)
+  USE globalData_mizuRoute,        ONLY: timeVar       ! model time variables in time unit since reference time
+  USE globalData_mizuRoute,        ONLY: iTime         ! time index at simulation time step
+  USE globalData_mizuRoute,        ONLY: simDatetime   ! current model time data (yyyy:mm:dd:hh:mm:sec)
+  USE globalData_mizuRoute,        ONLY: begDatetime   ! simulation begin datetime data (yyyy:mm:dd:hh:mm:sec)
+  USE globalData_mizuRoute,        ONLY: endDatetime   ! simulation end time data (yyyy:mm:dd:hh:mm:sec)
+  USE globalData_mizuRoute,        ONLY: restDatetime  ! restart time data (yyyy:mm:dd:hh:mm:sec)
+  USE globalData_mizuRoute,        ONLY: dropDatetime  ! restart dropoff calendar date/time
+  USE globalData_mizuRoute,        ONLY: roBegDatetime ! forcing data start datetime data (yyyy:mm:dd:hh:mm:sec)
 
   implicit none
   ! Argument variables:
@@ -567,9 +567,9 @@ CONTAINS
   USE public_var,           ONLY : maxPfafLen               ! maximum digit of pfafstetter code (default 32)
   USE public_var,           ONLY : ntopAugmentMode          ! River network augmentation mode
   USE public_var,           ONLY : idSegOut                 ! River network subset mode (idSegOut > 0)
-  USE globalData,           ONLY : meta_PFAF                ! meta for pfafstetter code
-  USE globalData,           ONLY : NETOPO, RPARAM           ! network and parameter data structure used in routing routine
-  USE globalData,           ONLY : river_basin              ! OMP domain decompostion data strucuture
+  USE globalData_mizuRoute,           ONLY : meta_PFAF                ! meta for pfafstetter code
+  USE globalData_mizuRoute,           ONLY : NETOPO, RPARAM           ! network and parameter data structure used in routing routine
+  USE globalData_mizuRoute,           ONLY : river_basin              ! OMP domain decompostion data strucuture
   USE var_lookup,           ONLY : ixPFAF                   ! index of variables for the pfafstetter code
   USE read_streamSeg,       ONLY : getData                  ! get the ancillary data
   USE write_streamSeg,      ONLY : writeData                ! write the ancillary data
@@ -732,7 +732,7 @@ CONTAINS
  USE dataTypes,   ONLY : runoff                 ! runoff data type
  USE read_runoff, ONLY : read_runoff_metadata   ! read meta data from runoff data
  USE read_remap,  ONLY : get_remap_data         ! read remap data
- USE globalData,  ONLY : basinID                ! basin ID
+ USE globalData_mizuRoute,  ONLY : basinID                ! basin ID
 
  implicit none
  ! Argument variables
@@ -856,10 +856,10 @@ CONTAINS
    USE public_var,    ONLY: vname_gageSite      ! name of gage site ID (chacter) variable in flow netCDF
    USE public_var,    ONLY: dname_gageSite      ! name of site dimension in flow netCDF
    USE public_var,    ONLY: gageMetaFile        ! gage meta csv
-   USE globalData,    ONLY: rch_qtake_data      ! instantiated water take data
-   USE globalData,    ONLY: gage_obs_data       ! instantiated gage obs data
-   USE globalData,    ONLY: gage_meta_data      ! instantiated gage meta data
-   USE globalData,    ONLY: reachID             ! reach ID in network data
+   USE globalData_mizuRoute,    ONLY: rch_qtake_data      ! instantiated water take data
+   USE globalData_mizuRoute,    ONLY: gage_obs_data       ! instantiated gage obs data
+   USE globalData_mizuRoute,    ONLY: gage_meta_data      ! instantiated gage meta data
+   USE globalData_mizuRoute,    ONLY: reachID             ! reach ID in network data
    USE obs_data,      ONLY: gageObs, waterTake  ! gage obs and water take classes
    USE gageMeta_data, ONLY: gageMeta            ! gage meta class
 

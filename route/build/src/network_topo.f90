@@ -5,11 +5,11 @@ USE nrtype
 USE dataTypes, ONLY: var_ilength             ! integer type:          var(:)%dat
 USE dataTypes, ONLY: var_dlength             ! double precision type: var(:)%dat
 ! metadata on data structures
-USE globalData, ONLY: meta_struct            ! structure information
-USE globalData, ONLY: meta_HRU               ! HRU properties
-USE globalData, ONLY: meta_HRU2SEG           ! HRU-to-segment mapping
-USE globalData, ONLY: meta_SEG               ! stream segment properties
-USE globalData, ONLY: meta_NTOPO             ! network topology
+USE globalData_mizuRoute, ONLY: meta_struct            ! structure information
+USE globalData_mizuRoute, ONLY: meta_HRU               ! HRU properties
+USE globalData_mizuRoute, ONLY: meta_HRU2SEG           ! HRU-to-segment mapping
+USE globalData_mizuRoute, ONLY: meta_SEG               ! stream segment properties
+USE globalData_mizuRoute, ONLY: meta_NTOPO             ! network topology
 ! named variables
 USE public_var, ONLY: true,false             ! named integers for true/false
 USE public_var, ONLY: verySmall              ! a very small value

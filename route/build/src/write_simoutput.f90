@@ -5,9 +5,9 @@ USE nrtype
 USE var_lookup,only: ixRFLX, nVarsRFLX
 USE public_var,only: iulog
 USE public_var,only: integerMissing
-USE globalData,only: meta_rflx
-USE globalData,only: simout_nc
-USE globalData,only: idxSUM, idxIRF, idxKWT, idxKW, idxMC, idxDW
+USE globalData_mizuRoute,only: meta_rflx
+USE globalData_mizuRoute,only: simout_nc
+USE globalData_mizuRoute,only: idxSUM, idxIRF, idxKWT, idxKW, idxMC, idxDW
 USE io_netcdf, only: ncd_int
 USE io_netcdf, only: ncd_float, ncd_double
 USE io_netcdf, only: ncd_unlimited
@@ -37,10 +37,10 @@ CONTAINS
  ! *********************************************************************
  SUBROUTINE output(ierr, message)    ! out:   error control
   !Dependent modules
-  USE globalData, ONLY: nHRU, nRch          ! number of ensembles, HRUs and river reaches
-  USE globalData, ONLY: RCHFLX              ! Reach fluxes (ensembles, space [reaches])
-  USE globalData, ONLY: runoff_data         ! runoff data for one time step for LSM HRUs and River network HRUs
-  USE globalData, ONLY: timeVar             ! time variable at current model time step
+  USE globalData_mizuRoute, ONLY: nHRU, nRch          ! number of ensembles, HRUs and river reaches
+  USE globalData_mizuRoute, ONLY: RCHFLX              ! Reach fluxes (ensembles, space [reaches])
+  USE globalData_mizuRoute, ONLY: runoff_data         ! runoff data for one time step for LSM HRUs and River network HRUs
+  USE globalData_mizuRoute, ONLY: timeVar             ! time variable at current model time step
 
   implicit none
 
@@ -179,9 +179,9 @@ CONTAINS
  USE public_var,          only : newFileFrequency  ! frequency for new output files (day, month, annual)
  USE public_var,          only : time_units        ! time units (seconds, hours, or days)
  ! saved global data
- USE globalData,          only : basinID,reachID   ! HRU and reach ID in network
- USE globalData,          only : simDatetime       ! previous and current model time
- USE globalData,          only : nEns, nHRU, nRch  ! number of ensembles, HRUs and river reaches
+ USE globalData_mizuRoute,          only : basinID,reachID   ! HRU and reach ID in network
+ USE globalData_mizuRoute,          only : simDatetime       ! previous and current model time
+ USE globalData_mizuRoute,          only : nEns, nHRU, nRch  ! number of ensembles, HRUs and river reaches
 
  implicit none
 
@@ -272,10 +272,10 @@ CONTAINS
                        ierr, message)      ! output: error control
 
  USE public_var, ONLY: netcdf_format
- USE globalData, ONLY: version
- USE globalData, ONLY: gitBranch
- USE globalData, ONLY: gitHash
- USE globalData, ONLY: meta_qDims
+ USE globalData_mizuRoute, ONLY: version
+ USE globalData_mizuRoute, ONLY: gitBranch
+ USE globalData_mizuRoute, ONLY: gitHash
+ USE globalData_mizuRoute, ONLY: meta_qDims
  USE var_lookup, ONLY: ixQdims, nQdims
 
  implicit none

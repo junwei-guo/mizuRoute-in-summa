@@ -4,8 +4,8 @@ USE nrtype
 USE public_var, ONLY: iulog            ! i/o logical unit number
 USE public_var, ONLY: qmodOption       ! option for streamflow modification (DA)
 USE public_var, ONLY: takeWater        ! switch for water abstraction/injection
-USE globalData, ONLY: gage_obs_data
-USE globalData, ONLY: rch_qtake_data
+USE globalData_mizuRoute, ONLY: gage_obs_data
+USE globalData_mizuRoute, ONLY: rch_qtake_data
 
 implicit none
 
