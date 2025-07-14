@@ -29,6 +29,7 @@ implicit none
 
 public :: stand_alone_run
 public :: route_sync_run_initialize
+public :: route_sync_run_stepping
 
 ! ******
 ! define variables
@@ -53,7 +54,7 @@ CONTAINS
     ! ******
     ! get command-line argument defining the full path to the control file
     ! ***********************************
-    call getarg(1,cfile_name)
+    !call getarg(1,cfile_name)
     if(len_trim(cfile_name)==0) call handle_error(50,'need to supply name of the control file as a command-line argument')
 
     ! *****
@@ -146,4 +147,8 @@ CONTAINS
     if(ierr/=0) call handle_error(ierr, cmessage)
 
   end SUBROUTINE route_sync_run_initialize
+
+  SUBROUTINE route_sync_run_stepping()
+
+  END SUBROUTINE route_sync_run_stepping
 END MODULE route_interface
