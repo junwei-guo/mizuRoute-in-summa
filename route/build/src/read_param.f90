@@ -1,4 +1,4 @@
-MODULE read_param_module
+MODULE read_param_module_routing
 
  USE nrtype, ONLY : i4b,   &
                     strLen
@@ -40,4 +40,4 @@ MODULE read_param_module
 
   END SUBROUTINE read_param
 
-END MODULE read_param_module
+END MODULE read_param_module_routing

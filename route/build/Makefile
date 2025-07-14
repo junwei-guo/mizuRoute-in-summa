@@ -195,7 +195,6 @@ DRIVER = $(F_KORE_DIR)route_runoff.f90
 all:  compileMOD compileOBJ lib
 
 
-# compile
 compileMOD:
 	$(FC_EXE) $(FLAGS) $(MODSUB) $(DRIVER) \
 	$(LIBNETCDF) $(INCNETCDF) -o $(EXE)
@@ -213,7 +212,7 @@ lib:
 
 # Remove object files
 clean:
-						rm -f *.o src/*.o
+						rm -f *.o src/*.o ${EXE} libmizuroute.a
 						rm -f *.lst
 						rm -f *.mod
 						rm -f *__genmod.f90

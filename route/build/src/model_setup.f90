@@ -43,7 +43,7 @@ CONTAINS
   USE globalData_mizuRoute,          ONLY : gitHash          ! git commit hash
   USE popMetadat_module,   ONLY : popMetadat       ! populate metadata
   USE read_control_module, ONLY : read_control     ! read the control file
-  USE read_param_module,   ONLY : read_param       ! read the routing parameters
+  USE read_param_module_routing,   ONLY : read_param       ! read the routing parameters
 
   implicit none
   ! Argument variables
